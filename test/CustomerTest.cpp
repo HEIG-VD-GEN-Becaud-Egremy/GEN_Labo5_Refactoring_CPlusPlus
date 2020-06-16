@@ -3,6 +3,7 @@
 #include "../src/Customer.h"
 #include "../src/Movie.h"
 #include "../src/Rental.h"
+#include "../src/PriceCode.h"
 
 TEST(CustomerTest, simple) {
 
@@ -15,8 +16,8 @@ TEST(CustomerTest, simple) {
 
     Customer customer("Olivier");
     customer.addRental(Rental(Movie("Karate Kid"), 7));
-    customer.addRental(Rental(Movie("Avengers: Endgame", Movie::NEW_RELEASE), 5));
-    customer.addRental(Rental(Movie("Snow White", Movie::CHILDRENS), 3));
+    customer.addRental(Rental(Movie("Avengers: Endgame", NEW_RELEASE), 5));
+    customer.addRental(Rental(Movie("Snow White", CHILDRENS), 3));
 
     ASSERT_EQ(customer.statement(), EXPECTED_STATEMENT);
 }
