@@ -1,6 +1,5 @@
+//  Movie.cpp
 #include "Movie.h"
-#include <utility>
-
 
 Movie::Movie(std::string  title, int priceCode) :
         _title(std::move( title )),
@@ -34,10 +33,6 @@ double Movie::getPrice(unsigned int daysRented) const {
 }
 int Movie::getPriceCode() const {
     return _priceCode;
-}
-
-void Movie::setPriceCode(int arg) {
-    _priceCode = arg;
 }
 
 std::string Movie::getTitle() const {

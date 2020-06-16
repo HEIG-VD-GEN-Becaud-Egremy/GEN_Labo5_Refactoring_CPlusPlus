@@ -1,8 +1,8 @@
 // Rental.cpp
 #include "Rental.h"
 
-Rental::Rental(const Movie& movie, int daysRented):
-    _movie(movie),
+Rental::Rental(Movie movie, int daysRented):
+    _movie(std::move(movie)),
     _daysRented(daysRented) { }
 
 double Rental::getPrice() const {
@@ -13,10 +13,6 @@ int Rental::getRenterPoints() const {
     return 1 + (_movie.getPriceCode() == NEW_RELEASE &&
                 _daysRented > 1 ?
                 1 : 0);
-}
-
-int Rental::getDaysRented() const {
-    return _daysRented;
 }
 
 const Movie& Rental::getMovie() const {

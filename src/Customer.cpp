@@ -10,8 +10,8 @@ using std::vector;
 
 using namespace std;
 
-string Customer::statement()
-{
+string Customer::statement() {
+
     ostringstream result;
     double        thisAmount;
     double        totalAmount          = 0;
