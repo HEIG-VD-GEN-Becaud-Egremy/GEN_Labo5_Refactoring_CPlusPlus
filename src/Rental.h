@@ -6,14 +6,14 @@
 
 class Rental {
 public:
-    Rental( Movie  movie, int daysRented );
+    Rental(Movie* movie, int daysRented);
 
     double getPrice() const;
     int getRenterPoints() const;
     const Movie& getMovie() const;
 
 private:
-    Movie _movie;
+    Movie* _movie;
     int _daysRented;
 };
 

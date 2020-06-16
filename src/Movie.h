@@ -7,11 +7,12 @@
 
 class Movie {
 public:
-    Movie(std::string  title, int priceCode = REGULAR);
+    explicit Movie(std::string title, int priceCode = REGULAR);
+    Movie();
 
-    double getPrice(unsigned int daysRented) const;
-    int getPriceCode() const;
-    std::string getTitle() const;
+    virtual std::string getTitle() const;
+    virtual int getPriceCode() const;
+    virtual double getPrice(unsigned int daysRented) const;
 
 private:
     std::string _title;

@@ -1,9 +1,19 @@
 //  Movie.cpp
 #include "Movie.h"
 
-Movie::Movie(std::string  title, int priceCode) :
-        _title(std::move( title )),
-        _priceCode( priceCode ) { }
+Movie::Movie(std::string title, int priceCode) :
+        _title(std::move(title)),
+        _priceCode(priceCode) { }
+
+Movie::Movie() : Movie("") { };
+
+std::string Movie::getTitle() const {
+    return _title;
+}
+
+int Movie::getPriceCode() const {
+    return _priceCode;
+}
 
 double Movie::getPrice(unsigned int daysRented) const {
 
@@ -30,11 +40,4 @@ double Movie::getPrice(unsigned int daysRented) const {
     }
 
     return price;
-}
-int Movie::getPriceCode() const {
-    return _priceCode;
-}
-
-std::string Movie::getTitle() const {
-    return _title;
 }
