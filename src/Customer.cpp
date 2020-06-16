@@ -12,30 +12,30 @@ using namespace std;
 
 string Customer::statement()
 {
-    double totalAmount = 0;
-    int frequentRenterPoints = 0;
-    vector< Rental >::iterator iter = _rentals.begin();
-    vector< Rental >::iterator iter_end = _rentals.end();
     ostringstream result;
+    double        thisAmount;
+    double        totalAmount          = 0;
+    int           frequentRenterPoints = 0;
+
     result << "Rental Record for " << getName() << "\n";
-    for ( ; iter != iter_end; ++iter ) {
-        double thisAmount = 0;
-        Rental each = *iter;
 
-        thisAmount += each.getPrice();
+    for (const Rental& rental : _rentals) {
 
-        // add frequent renter points
-        frequentRenterPoints += each.getRenterPoints();
+        // get rental price and increment render points
+        thisAmount = rental.getPrice();
+        frequentRenterPoints += rental.getRenterPoints();
 
         // show figures for this rental
-        result << "\t" << each.getMovie().getTitle() << "\t"
-               << thisAmount << "\n";
+        result << "\t" << rental.getMovie().getTitle()
+               << "\t" << thisAmount << "\n";
+
         totalAmount += thisAmount;
     }
     // add footer lines
     result << "Amount owed is " << totalAmount << "\n";
     result << "You earned " << frequentRenterPoints
            << " frequent renter points";
+
     return result.str();
 }
 
