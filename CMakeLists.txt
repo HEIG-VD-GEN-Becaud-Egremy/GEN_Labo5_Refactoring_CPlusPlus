@@ -25,11 +25,12 @@ add_subdirectory("${CMAKE_BINARY_DIR}/googletest-src"
 		)
 # Add executable and link googletest libs
 add_executable(GEN_Labo5
-		src/Customer.cpp
 		src/Customer.h
-		src/Movie.cpp
+		src/Customer.cpp
 		src/Movie.h
+		src/Movie.cpp
 		src/Rental.h
+		src/Rental.cpp
 		test/CustomerTest.cpp)
 
 target_link_libraries(GEN_Labo5 gtest gmock_main)

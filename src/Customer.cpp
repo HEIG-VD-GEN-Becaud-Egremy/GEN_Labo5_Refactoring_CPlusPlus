@@ -2,6 +2,8 @@
 #include <sstream>
 #include <vector>
 #include "Customer.h"
+#include "Movie.h"
+#include "Rental.h"
 
 using std::ostringstream;
 using std::vector;
@@ -53,4 +55,16 @@ string Customer::statement()
     result << "You earned " << frequentRenterPoints
            << " frequent renter points";
     return result.str();
+}
+
+Customer::Customer() = default;
+
+Customer::Customer(string name) : _name(move(name)) { }
+
+void Customer::addRental(const Rental& arg) {
+    _rentals.push_back( arg );
+}
+
+string Customer::getName() const {
+    return _name;
 }
