@@ -31,6 +31,7 @@ add_executable(GEN_Labo5
 		src/Movie.cpp
 		src/Rental.h
 		src/Rental.cpp
-		test/CustomerTest.cpp)
+		test/CustomerTest.cpp
+		test/MovieTest.cpp)
 
 target_link_libraries(GEN_Labo5 gtest gmock_main)
