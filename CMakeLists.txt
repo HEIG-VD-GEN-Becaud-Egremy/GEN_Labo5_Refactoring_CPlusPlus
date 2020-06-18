@@ -30,6 +30,7 @@ add_executable(GEN_Labo5
 		src/Movie.h
 		src/Movie.cpp
 		src/PriceCode/PriceCode.h
+		src/PriceCode/PriceCode.cpp
 		src/PriceCode/PriceCodeRegular.h
 		src/PriceCode/PriceCodeRegular.cpp
 		src/PriceCode/PriceCodeNewRelease.h
@@ -39,8 +40,10 @@ add_executable(GEN_Labo5
 		src/Rental.h
 		src/Rental.cpp
 		test/CustomerTest.cpp
-		test/MovieTest.cpp
-		test/RentalTest.cpp
-		test/mock/MovieMock.hpp)
+		test/PriceCodeTest.cpp
+		test/PriceCodeRegularTest.cpp
+		test/PriceCodeNewReleaseTest.cpp
+		test/PriceCodeChildrensTest.cpp
+		test/MovieTest.cpp)
 
 target_link_libraries(GEN_Labo5 gtest gmock_main)
