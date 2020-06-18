@@ -29,6 +29,13 @@ add_executable(GEN_Labo5
 		src/Customer.cpp
 		src/Movie.h
 		src/Movie.cpp
+		src/PriceCode/PriceCode.h
+		src/PriceCode/PriceCodeRegular.h
+		src/PriceCode/PriceCodeRegular.cpp
+		src/PriceCode/PriceCodeNewRelease.h
+		src/PriceCode/PriceCodeNewRelease.cpp
+		src/PriceCode/PriceCodeChildrens.h
+		src/PriceCode/PriceCodeChildrens.cpp
 		src/Rental.h
 		src/Rental.cpp
 		test/CustomerTest.cpp
