@@ -16,7 +16,7 @@ TEST(PriceCodeGetPrice, unit) {
     EXPECT_CALL(pcRegular,    getPrice(3)).WillRepeatedly(Return(3.5));
     EXPECT_CALL(pcRegular,    getPrice(6)).WillRepeatedly(Return(8.));
 
-    EXPECT_CALL(pcNewRelease, getPrice(1)).WillRepeatedly(Return(1.));
+    EXPECT_CALL(pcNewRelease, getPrice(1)).WillRepeatedly(Return(3.));
     EXPECT_CALL(pcNewRelease, getPrice(3)).WillRepeatedly(Return(9.));
 
     EXPECT_CALL(pcChildrens,  getPrice(1)).WillRepeatedly(Return(1.5));
@@ -31,7 +31,7 @@ TEST(PriceCodeGetPrice, unit) {
     ASSERT_DOUBLE_EQ(pcRegularPtr->getPrice(3), 3.5);
     ASSERT_DOUBLE_EQ(pcRegularPtr->getPrice(6), 8.);
 
-    ASSERT_DOUBLE_EQ(pcNewReleasePtr->getPrice(1), 1.);
+    ASSERT_DOUBLE_EQ(pcNewReleasePtr->getPrice(1), 3.);
     ASSERT_DOUBLE_EQ(pcNewReleasePtr->getPrice(3), 9.);
 
     ASSERT_DOUBLE_EQ(pcChildrensPtr->getPrice(1), 1.5);
