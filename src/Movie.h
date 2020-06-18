@@ -1,22 +1,29 @@
-// Movie.h
+// PriceCode.h
 #ifndef MOVIE_H
 #define MOVIE_H
 
 #include <string>
-#include "PriceCode.h"
+#include <memory>
+#include "PriceCode/PriceCode.h"
+#include "PriceCode/PriceCodeRegular.h"
 
 class Movie {
 public:
-    explicit Movie(std::string title, int priceCode = REGULAR);
+
+    typedef std::shared_ptr<PriceCode> PriceCode_ptr;
+
+    explicit Movie(std::string title,
+          PriceCode_ptr priceCode = std::make_shared<PriceCodeRegular>());
     Movie();
 
     virtual std::string getTitle() const;
-    virtual int getPriceCode() const;
+    virtual Movie::PriceCode_ptr getPriceCode() const;
+    virtual void setPriceCode(Movie::PriceCode_ptr priceCode);
     virtual double getPrice(unsigned int daysRented) const;
 
 private:
-    std::string _title;
-    int _priceCode;
+    std::string   _title;
+    PriceCode_ptr _priceCode;
 };
 
 #endif // MOVIE_H

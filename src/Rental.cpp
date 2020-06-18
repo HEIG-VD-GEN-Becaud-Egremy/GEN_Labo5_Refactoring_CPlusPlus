@@ -10,9 +10,7 @@ double Rental::getPrice() const {
 }
 
 int Rental::getRenterPoints() const {
-    return 1 + ((*_movie).getPriceCode() == NEW_RELEASE &&
-                _daysRented > 1 ?
-                1 : 0);
+    return (int) (*_movie).getPriceCode()->getRenderPoints(_daysRented);
 }
 
 const Movie& Rental::getMovie() const {

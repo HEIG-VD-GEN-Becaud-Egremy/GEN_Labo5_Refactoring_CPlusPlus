@@ -3,7 +3,10 @@
 #include "../src/Customer.h"
 #include "../src/Movie.h"
 #include "../src/Rental.h"
-#include "../src/PriceCode.h"
+#include "../src/PriceCode/PriceCode.h"
+#include "../src/PriceCode/PriceCodeRegular.h"
+#include "../src/PriceCode/PriceCodeNewRelease.h"
+#include "../src/PriceCode/PriceCodeChildrens.h"
 
 TEST(CustomerTest, simple) {
 
@@ -16,8 +19,8 @@ TEST(CustomerTest, simple) {
 
     Customer customer("Olivier");
     customer.addRental(Rental(new Movie("Karate Kid"), 7));
-    customer.addRental(Rental(new Movie("Avengers: Endgame", NEW_RELEASE), 5));
-    customer.addRental(Rental(new Movie("Snow White", CHILDRENS), 3));
+    customer.addRental(Rental(new Movie("Avengers: Endgame", std::make_shared<PriceCodeNewRelease>()), 5));
+    customer.addRental(Rental(new Movie("Snow White", std::make_shared<PriceCodeChildrens>()), 3));
 
     ASSERT_EQ(customer.statement(), EXPECTED_STATEMENT);
 }
