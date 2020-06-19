@@ -1,7 +1,10 @@
 #include "gtest/gtest.h"
+#include <memory>
 
 #include "../src/Rental.h"
 #include "mock/MovieMock.hpp"
+#include "mock/PriceCodeRegularMock.hpp"
+#include "mock/PriceCodeNewReleaseMock.hpp"
 
 using ::testing::Return;
 
@@ -19,17 +22,28 @@ TEST(RentalGetPrice, unit) {
 }
 
 TEST(RentalGetRenderPoints, simple) {
-    MovieMock regularMovie;
-    MovieMock newReleaseMovie1;
-    MovieMock newReleaseMovie2;
+    MovieMock regularMovieMock;
+    MovieMock newReleaseMovie1Mock;
+    MovieMock newReleaseMovie2Mock;
 
-    EXPECT_CALL(regularMovie,     getPriceCode()).WillRepeatedly(Return(REGULAR));
-    EXPECT_CALL(newReleaseMovie1, getPriceCode()).WillRepeatedly(Return(NEW_RELEASE));
-    EXPECT_CALL(newReleaseMovie2, getPriceCode()).WillRepeatedly(Return(NEW_RELEASE));
+    Movie* regularMovie     = &regularMovieMock;
+    Movie* newReleaseMovie1 = &newReleaseMovie1Mock;
+    Movie* newReleaseMovie2 = &newReleaseMovie2Mock;
 
-    Rental rentalRegularMovie     = Rental(&regularMovie,     1);
-    Rental rentalNewReleaseMovie1 = Rental(&newReleaseMovie1, 1);
-    Rental rentalNewReleaseMovie2 = Rental(&newReleaseMovie2, 2);
+    std::shared_ptr<PriceCodeRegularMock>    pcRegularMockPtr    = std::make_shared<PriceCodeRegularMock>();
+    std::shared_ptr<PriceCodeNewReleaseMock> pcNewReleaseMockPtr = std::make_shared<PriceCodeNewReleaseMock>();
+
+    EXPECT_CALL(regularMovieMock,     getPriceCode()).WillRepeatedly(Return(pcRegularMockPtr));
+    EXPECT_CALL(newReleaseMovie1Mock, getPriceCode()).WillRepeatedly(Return(pcNewReleaseMockPtr));
+    EXPECT_CALL(newReleaseMovie2Mock, getPriceCode()).WillRepeatedly(Return(pcNewReleaseMockPtr));
+
+    EXPECT_CALL(*pcRegularMockPtr,    getRenderPoints(1u)).WillRepeatedly(Return(1u));
+    EXPECT_CALL(*pcNewReleaseMockPtr, getRenderPoints(1u)).WillRepeatedly(Return(1u));
+    EXPECT_CALL(*pcNewReleaseMockPtr, getRenderPoints(2u)).WillRepeatedly(Return(2u));
+
+    Rental rentalRegularMovie     = Rental(regularMovie,     1);
+    Rental rentalNewReleaseMovie1 = Rental(newReleaseMovie1, 1);
+    Rental rentalNewReleaseMovie2 = Rental(newReleaseMovie2, 2);
 
     ASSERT_EQ(rentalRegularMovie.getRenterPoints(),    1);
     ASSERT_EQ(rentalNewReleaseMovie1.getRenterPoints(),1);
