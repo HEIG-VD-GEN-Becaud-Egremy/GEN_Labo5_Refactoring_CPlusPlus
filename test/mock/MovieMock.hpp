@@ -6,9 +6,9 @@
 
 class MovieMock : public Movie {
 public:
-    MOCK_METHOD(std::string, getTitle,     (),            (const));
-    MOCK_METHOD(double,      getPrice,     (unsigned int),(const));
-    MOCK_METHOD(int,         getPriceCode, (),            (const));
+    MOCK_METHOD(std::string,          getTitle,     (),            (const));
+    MOCK_METHOD(double,               getPrice,     (unsigned int),(const));
+    MOCK_METHOD(Movie::PriceCode_ptr, getPriceCode, (),            (const));
 };
 
 
