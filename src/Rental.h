@@ -6,14 +6,18 @@
 
 class Rental {
 public:
-    Rental(Movie* movie, int daysRented);
 
-    double getPrice() const;
-    int getRenterPoints() const;
-    const Movie& getMovie() const;
+    typedef std::shared_ptr<Movie> Movie_ptr;
+
+    Rental(Movie_ptr movie, int daysRented);
+    Rental();
+
+    virtual double getPrice() const;
+    virtual int getRenterPoints() const;
+    virtual Movie_ptr getMovie() const;
 
 private:
-    Movie* _movie;
+    Movie_ptr _movie;
     int _daysRented;
 };
 
