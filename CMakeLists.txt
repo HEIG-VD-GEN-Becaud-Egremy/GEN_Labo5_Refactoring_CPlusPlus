@@ -21,8 +21,8 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 # Add googletest directly to our build. This adds the following targets:
 # gtest, gtest_main, gmock and gmock_main
 add_subdirectory("${CMAKE_BINARY_DIR}/googletest-src"
-		"${CMAKE_BINARY_DIR}/googletest-build"
-		)
+		"${CMAKE_BINARY_DIR}/googletest-build")
+
 # Add executable and link googletest libs
 add_executable(GEN_Labo5
 		src/Customer.h
@@ -44,6 +44,7 @@ add_executable(GEN_Labo5
 		test/PriceCodeRegularTest.cpp
 		test/PriceCodeNewReleaseTest.cpp
 		test/PriceCodeChildrensTest.cpp
-		test/MovieTest.cpp)
+		test/MovieTest.cpp
+		test/RentalTest.cpp)
 
 target_link_libraries(GEN_Labo5 gtest gmock_main)
