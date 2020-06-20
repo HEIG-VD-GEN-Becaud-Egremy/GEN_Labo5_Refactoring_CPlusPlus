@@ -9,16 +9,19 @@
 
 class Customer {
 public:
-    Customer();
-    explicit Customer( std::string  name );
 
-    void addRental( const Rental& arg );
+    typedef std::shared_ptr<Rental> Rental_ptr;
+
+    Customer();
+    explicit Customer(std::string name);
+
+    void addRental(Rental_ptr& arg);
     std::string getName() const;
     std::string statement();
 
 private:
     std::string _name;
-    std::vector< Rental > _rentals;
+    std::vector<Rental_ptr> _rentals;
 };
 
 #endif // CUSTOMER_H

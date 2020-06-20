@@ -19,14 +19,14 @@ string Customer::statement() {
 
     result << "Rental Record for " << getName() << "\n";
 
-    for (const Rental& rental : _rentals) {
+    for (const Rental_ptr& rental : _rentals) {
 
         // get rental price and increment render points
-        thisAmount = rental.getPrice();
-        frequentRenterPoints += rental.getRenterPoints();
+        thisAmount = rental->getPrice();
+        frequentRenterPoints += rental->getRenterPoints();
 
         // show figures for this rental
-        result << "\t" << rental.getMovie().getTitle()
+        result << "\t" << rental->getMovie()->getTitle()
                << "\t" << thisAmount << "\n";
 
         totalAmount += thisAmount;
@@ -35,7 +35,6 @@ string Customer::statement() {
     result << "Amount owed is " << totalAmount << "\n";
     result << "You earned " << frequentRenterPoints
            << " frequent renter points";
-
     return result.str();
 }
 
@@ -43,7 +42,7 @@ Customer::Customer() = default;
 
 Customer::Customer(string name) : _name(move(name)) { }
 
-void Customer::addRental(const Rental& arg) {
+void Customer::addRental(Rental_ptr& arg) {
     _rentals.push_back( arg );
 }
 
