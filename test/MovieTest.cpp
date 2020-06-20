@@ -38,9 +38,9 @@ TEST(MovieGetPriceChildrens, unit) {
 }
 
 TEST(MovieGetPriceCode, unit) {
-    std::shared_ptr<PriceCodeRegularMock> pcRegularPtrMock = std::make_shared<PriceCodeRegularMock>();
+    std::shared_ptr<PriceCodeRegularMock>    pcRegularPtrMock    = std::make_shared<PriceCodeRegularMock>();
     std::shared_ptr<PriceCodeNewReleaseMock> pcNewReleasePtrMock = std::make_shared<PriceCodeNewReleaseMock>();
-    std::shared_ptr<PriceCodeChildrensMock> pcChildrensPtrMock = std::make_shared<PriceCodeChildrensMock>();
+    std::shared_ptr<PriceCodeChildrensMock>  pcChildrensPtrMock  = std::make_shared<PriceCodeChildrensMock>();
 
     Movie::PriceCode_ptr pcRegularPtr    = pcRegularPtrMock;
     Movie::PriceCode_ptr pcNewReleasePtr = pcNewReleasePtrMock;
