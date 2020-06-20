@@ -7,7 +7,7 @@
 class PriceCodeRegularMock : public PriceCodeRegular {
 public:
     MOCK_METHOD(double,       getPrice,        (unsigned int), (const));
-    MOCK_METHOD(unsigned int, getRenderPoints, (unsigned int), (const));
+    MOCK_METHOD(unsigned int, getRenterPoints, (unsigned int), (const));
 };
 
 #endif //PRICECODEREGULARMOCK_HPP

@@ -8,7 +8,7 @@
 class PriceCodeNewReleaseMock : public PriceCodeNewRelease {
 public:
     MOCK_METHOD(double,       getPrice,        (unsigned int), (const));
-    MOCK_METHOD(unsigned int, getRenderPoints, (unsigned int), (const));
+    MOCK_METHOD(unsigned int, getRenterPoints, (unsigned int), (const));
 };
 
 #endif //PRICECODENEWRELEASEMOCK_HPP
