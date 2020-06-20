@@ -39,30 +39,30 @@ TEST(PriceCodeGetPrice, unit) {
     ASSERT_DOUBLE_EQ(pcChildrensPtr->getPrice(6), 6.);
 }
 
-TEST(PriceCodeGetRenderPoints, unit) {
+TEST(PriceCodeGetRenterPoints, unit) {
     PriceCodeRegularMock    pcRegular;
     PriceCodeNewReleaseMock pcNewRelease;
     PriceCodeChildrensMock  pcChildrens;
 
-    EXPECT_CALL(pcRegular,    getRenderPoints(1)).WillRepeatedly(Return(1));
-    EXPECT_CALL(pcRegular,    getRenderPoints(3)).WillRepeatedly(Return(1));
+    EXPECT_CALL(pcRegular,    getRenterPoints(1)).WillRepeatedly(Return(1));
+    EXPECT_CALL(pcRegular,    getRenterPoints(3)).WillRepeatedly(Return(1));
 
-    EXPECT_CALL(pcNewRelease, getRenderPoints(1)).WillRepeatedly(Return(1));
-    EXPECT_CALL(pcNewRelease, getRenderPoints(3)).WillRepeatedly(Return(2));
+    EXPECT_CALL(pcNewRelease, getRenterPoints(1)).WillRepeatedly(Return(1));
+    EXPECT_CALL(pcNewRelease, getRenterPoints(3)).WillRepeatedly(Return(2));
 
-    EXPECT_CALL(pcChildrens,  getRenderPoints(1)).WillRepeatedly(Return(1));
-    EXPECT_CALL(pcChildrens,  getRenderPoints(3)).WillRepeatedly(Return(1));
+    EXPECT_CALL(pcChildrens,  getRenterPoints(1)).WillRepeatedly(Return(1));
+    EXPECT_CALL(pcChildrens,  getRenterPoints(3)).WillRepeatedly(Return(1));
 
     PriceCode* pcRegularPtr    = &pcRegular;
     PriceCode* pcNewReleasePtr = &pcNewRelease;
     PriceCode* pcChildrensPtr  = &pcChildrens;
 
-    ASSERT_EQ(pcRegularPtr->getRenderPoints(1), 1);
-    ASSERT_EQ(pcRegularPtr->getRenderPoints(3), 1);
+    ASSERT_EQ(pcRegularPtr->getRenterPoints(1), 1);
+    ASSERT_EQ(pcRegularPtr->getRenterPoints(3), 1);
 
-    ASSERT_EQ(pcNewReleasePtr->getRenderPoints(1), 1);
-    ASSERT_EQ(pcNewReleasePtr->getRenderPoints(3), 2);
+    ASSERT_EQ(pcNewReleasePtr->getRenterPoints(1), 1);
+    ASSERT_EQ(pcNewReleasePtr->getRenterPoints(3), 2);
 
-    ASSERT_EQ(pcChildrensPtr->getRenderPoints(1), 1);
-    ASSERT_EQ(pcChildrensPtr->getRenderPoints(3), 1);
+    ASSERT_EQ(pcChildrensPtr->getRenterPoints(1), 1);
+    ASSERT_EQ(pcChildrensPtr->getRenterPoints(3), 1);
 }

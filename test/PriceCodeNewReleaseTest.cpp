@@ -9,9 +9,9 @@ TEST(PriceCodeNewReleaseGetPrice, unit) {
     ASSERT_DOUBLE_EQ(pcNewRelease.getPrice(3), 9.);
 }
 
-TEST(PriceCodeNewReleaseGetRenderPoints, unit) {
+TEST(PriceCodeNewReleaseGetRenterPoints, unit) {
     PriceCodeNewRelease pcRegular = PriceCodeNewRelease();
 
-    ASSERT_EQ(pcRegular.getRenderPoints(1), 1);
-    ASSERT_EQ(pcRegular.getRenderPoints(3), 2);
+    ASSERT_EQ(pcRegular.getRenterPoints(1), 1);
+    ASSERT_EQ(pcRegular.getRenterPoints(3), 2);
 }

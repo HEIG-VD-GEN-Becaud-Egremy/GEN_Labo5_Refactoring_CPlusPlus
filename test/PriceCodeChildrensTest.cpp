@@ -10,9 +10,9 @@ TEST(PriceCodeChildrensGetPrice, unit) {
     ASSERT_DOUBLE_EQ(pcChildrens.getPrice(6), 6.);
 }
 
-TEST(PriceCodeChildrensGetRenderPoints, unit) {
+TEST(PriceCodeChildrensGetRenterPoints, unit) {
     PriceCodeChildrens pcChildrens = PriceCodeChildrens();
 
-    ASSERT_EQ(pcChildrens.getRenderPoints(1), 1);
-    ASSERT_EQ(pcChildrens.getRenderPoints(3), 1);
+    ASSERT_EQ(pcChildrens.getRenterPoints(1), 1);
+    ASSERT_EQ(pcChildrens.getRenterPoints(3), 1);
 }
